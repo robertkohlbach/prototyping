@@ -1,0 +1,13 @@
+- name: Rename a snapshot
+  community.vmware.vmware_guest_snapshot:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    datacenter: "{{ datacenter_name }}"
+    folder: "/{{ datacenter_name }}/vm/"
+    name: "{{ guest_name }}"
+    state: present
+    snapshot_name: current_snap_name
+    new_snapshot_name: im_renamed
+    new_description: "{{ new_snapshot_description }}"
+  delegate_to: localhost

@@ -1,0 +1,8 @@
+- name: Remove a VM by UUID
+  community.general.xenserver_guest:
+    hostname: "{{ xenserver_hostname }}"
+    username: "{{ xenserver_username }}"
+    password: "{{ xenserver_password }}"
+    uuid: 421e4592-c069-924d-ce20-7e7533fab926
+    state: absent
+  delegate_to: localhost

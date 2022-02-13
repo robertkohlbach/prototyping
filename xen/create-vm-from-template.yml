@@ -1,0 +1,26 @@
+- name: Create a VM from a template
+  community.general.xenserver_guest:
+    hostname: "{{ xenserver_hostname }}"
+    username: "{{ xenserver_username }}"
+    password: "{{ xenserver_password }}"
+    validate_certs: no
+    folder: /testvms
+    name: testvm_2
+    state: poweredon
+    template: CentOS 7
+    disks:
+    - size_gb: 10
+      sr: my_sr
+    hardware:
+      num_cpus: 6
+      num_cpu_cores_per_socket: 3
+      memory_mb: 512
+    cdrom:
+      type: iso
+      iso_name: guest-tools.iso
+    networks:
+    - name: VM Network
+      mac: aa:bb:dd:aa:00:14
+    wait_for_ip_address: yes
+  delegate_to: localhost
+  register: deploy

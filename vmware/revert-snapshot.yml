@@ -1,0 +1,11 @@
+- name: Revert to a snapshot
+  community.vmware.vmware_guest_snapshot:
+    hostname: "{{ vcenter_hostname }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ vcenter_password }}"
+    datacenter: "{{ datacenter_name }}"
+    folder: "/{{ datacenter_name }}/vm/"
+    name: "{{ guest_name }}"
+    state: revert
+    snapshot_name: snap1
+  delegate_to: localhost

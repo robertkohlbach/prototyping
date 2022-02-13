@@ -1,0 +1,9 @@
+- name: Rename a VM (requires the VM's UUID)
+  community.general.xenserver_guest:
+    hostname: "{{ xenserver_hostname }}"
+    username: "{{ xenserver_username }}"
+    password: "{{ xenserver_password }}"
+    uuid: 421e4592-c069-924d-ce20-7e7533fab926
+    name: new_name
+    state: present
+  delegate_to: localhost

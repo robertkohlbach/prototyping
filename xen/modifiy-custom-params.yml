@@ -1,0 +1,12 @@
+
+- name: Modify custom params (boot order)
+  community.general.xenserver_guest:
+    hostname: "{{ xenserver_hostname }}"
+    username: "{{ xenserver_username }}"
+    password: "{{ xenserver_password }}"
+    name: testvm_8
+    state: present
+    custom_params:
+    - key: HVM_boot_params
+      value: { "order": "ndc" }
+  delegate_to: localhost

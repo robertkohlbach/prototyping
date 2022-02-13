@@ -1,0 +1,18 @@
+
+- name: Create a VM template
+  community.general.xenserver_guest:
+    hostname: "{{ xenserver_hostname }}"
+    username: "{{ xenserver_username }}"
+    password: "{{ xenserver_password }}"
+    validate_certs: no
+    folder: /testvms
+    name: testvm_6
+    is_template: yes
+    disk:
+    - size_gb: 10
+      sr: my_sr
+    hardware:
+      memory_mb: 512
+      num_cpus: 1
+  delegate_to: localhost
+  register: deploy

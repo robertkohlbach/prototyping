@@ -1,0 +1,12 @@
+- name: Customize network parameters
+  community.general.xenserver_guest:
+    hostname: "{{ xenserver_hostname }}"
+    username: "{{ xenserver_username }}"
+    password: "{{ xenserver_password }}"
+    name: testvm_10
+    networks:
+    - name: VM Network
+      ip: 192.168.1.100/24
+      gateway: 192.168.1.1
+    - type: dhcp
+  delegate_to: localhost
